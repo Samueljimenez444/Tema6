@@ -8,16 +8,28 @@ import java.util.Scanner;
 public class Ejercicio4 {
 
 	public static void main(String[] args) {
-		String texto="";
-		Scanner lectura=new Scanner(System.in);
-		try(BufferedWriter bw= new BufferedWriter(new FileWriter("src\\ejercicio4Parte1\\Texto.txt"))){
-			while(!texto.equals("salir"))
-			System.out.println("Introduce el texto para el fichero");
-			texto=lectura.nextLine();
-			bw.write(texto);
+		String texto = "";
+		Scanner lectura = new Scanner(System.in);
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src\\ejercicio4Parte1\\Texto.txt"))) {
+			System.out.println("Introduce el texto");
+			texto = lectura.nextLine();
+
+			while (!texto.equalsIgnoreCase("salir")) {
+				System.out.println("Introduce el texto");
+
+				bw.write(texto);
+				bw.newLine();
+				
+				texto = lectura.nextLine();
+
+			}
+
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
+
 		}
+		lectura.close();
+
 	}
 
 }
